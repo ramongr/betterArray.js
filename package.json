@@ -1,0 +1,22 @@
+{
+  "name": "better_array",
+  "version": "0.0.1",
+  "description": "A set of methods to superpower js Array object",
+  "main": "dist/betterArray.js",
+  "repository": "https://github.com/ramongr/betterArray.js",
+  "author": "Ramon Rodrigues",
+  "license": "MIT",
+  "private": false,
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "7",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.16.0",
+    "unminified-webpack-plugin": "^2.0.0",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0",
+    "webpack-dev-server": "^3.2.1"
+  }
+}
