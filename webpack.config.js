@@ -2,7 +2,6 @@ const path = require('path');
 const webpack = require('webpack');
 const UnminifiedWebpackPlugin = require('unminified-webpack-plugin');
 
-
 module.exports = {
   entry: './src/betterArray.js',
   output: {
