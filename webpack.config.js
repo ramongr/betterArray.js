@@ -6,7 +6,10 @@ module.exports = {
   entry: './src/betterArray.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'betterArray.min.js'
+    filename: 'betterArray.min.js',
+    library: 'BetterArray',
+    libraryTarget: 'var',
+    umdNamedDefine: true
   },
   plugins: [
     new UnminifiedWebpackPlugin()
@@ -16,10 +19,7 @@ module.exports = {
       {
         loader: 'babel-loader',
         test: /\.js$/,
-        exclude: /node_modules/,
-        query: {
-          presets: ['es2015']
-        }
+        exclude: /node_modules/
       }
     ]
   },
