@@ -37,14 +37,7 @@ class BetterArray extends Array {
   }
 
   occurences() {
-    const modeObj = {};
-
-    super.forEach((item) => {
-      if (modeObj[item]) { modeObj[item] += 1; }
-      if (!modeObj[item]) { modeObj[item] = 1; }
-    });
-
-    return modeObj;
+    return super.reduce(Reducer.objectReduce, {});
   }
 
   from(arr) {

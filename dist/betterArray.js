@@ -195,18 +195,7 @@ var BetterArray = function (_extendableBuiltin2) {
   }, {
     key: 'occurences',
     value: function occurences() {
-      var modeObj = {};
-
-      _get(BetterArray.prototype.__proto__ || Object.getPrototypeOf(BetterArray.prototype), 'forEach', this).call(this, function (item) {
-        if (modeObj[item]) {
-          modeObj[item] += 1;
-        }
-        if (!modeObj[item]) {
-          modeObj[item] = 1;
-        }
-      });
-
-      return modeObj;
+      return _get(BetterArray.prototype.__proto__ || Object.getPrototypeOf(BetterArray.prototype), 'reduce', this).call(this, _Reducer2.default.objectReduce, {});
     }
   }, {
     key: 'from',
@@ -278,6 +267,18 @@ var Reducer = function () {
     key: "minReducer",
     value: function minReducer(min, compare) {
       return min < compare ? min : compare;
+    }
+  }, {
+    key: "objectReduce",
+    value: function objectReduce(hash, item) {
+      var newObject = hash;
+      if (hash[item]) {
+        newObject[item] += 1;
+      } else {
+        newObject[item] = 1;
+      }
+
+      return newObject;
     }
   }]);
 

@@ -8,6 +8,18 @@ class Reducer {
   static maxReducer(max, compare) { return (max > compare) ? max : compare; }
 
   static minReducer(min, compare) { return (min < compare) ? min : compare; }
+
+  static objectReduce(object, item) {
+    const newObject = object;
+
+    if (object[item]) {
+      newObject[item] += 1;
+    } else {
+      newObject[item] = 1;
+    }
+
+    return newObject;
+  }
 }
 
 export default Reducer;
