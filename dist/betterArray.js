@@ -270,14 +270,17 @@ var Reducer = function () {
     }
   }, {
     key: "objectReduce",
-    value: function objectReduce(hash, item) {
-      var newObject = hash;
-      if (hash[item]) {
-        newObject[item] += 1;
-      } else {
-        newObject[item] = 1;
-      }
+    value: function objectReduce(object, item) {
+      var newObject = JSON.parse(JSON.stringify(object));
 
+      // if (object[item]) {
+      //   newObject[item] += 1;
+      // } else {
+      //   newObject[item] = 1;
+      // }
+      newObject[item] = 1;
+      console.log(object);
+      newObject[item] += object[item] ? 1 : 0;
       return newObject;
     }
   }]);

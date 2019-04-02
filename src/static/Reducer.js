@@ -10,13 +10,10 @@ class Reducer {
   static minReducer(min, compare) { return (min < compare) ? min : compare; }
 
   static objectReduce(object, item) {
-    const newObject = object;
+    const newObject = JSON.parse(JSON.stringify(object));
 
-    if (object[item]) {
-      newObject[item] += 1;
-    } else {
-      newObject[item] = 1;
-    }
+    newObject[item] = 1;
+    newObject[item] += object[item] ? 1 : 0;
 
     return newObject;
   }
