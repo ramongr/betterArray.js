@@ -1,47 +1,57 @@
 import Reducer from './static/Reducer';
 
 class BetterArray extends Array {
+  constructor(...args) {
+    super(...args);
+    this._reducer = super.reduce;
+  }
+
   sum() {
-    return super.reduce(Reducer.sumReducer, 0);
+    return this._reducer(Reducer.sumReducer, 0);
   }
 
   subtraction() {
-    if (super.length === 0) { return 0; }
-    return super.reduce(Reducer.subtractionReducer);
+    return this._reducer(Reducer.subtractionReducer, 0);
   }
 
   product() {
-    return super.reduce(Reducer.productReducer, 1);
+    return this._reducer(Reducer.productReducer, 1);
   }
 
   maximum() {
-    return super.reduce(Reducer.maxReducer());
+    return this._reducer(Reducer.maxReducer());
   }
 
   minimum() {
-    return super.reduce(Reducer.minReducer());
+    return this._reducer(Reducer.minReducer());
   }
 
   average() {
-    return this.sum() / super.length;
+    return this.sum() / this.length;
+  }
+
+  isEven () {
+    return (this.length % 2 === 0);
   }
 
   median() {
-    const half = Math.round(super.length / 2);
-    const isEven = (super.length % 2 === 0);
-    let median = super.sort()[half];
+    const sortedArray = this.sort();
+    const half = Math.round(sortedArray.length / 2);
+    const median = sortedArray[half - 1];
 
-    if (isEven) { median = (median + super.sort()[half - 1]) / 2; }
+    if (this.isEven()) {
+      return ((median + sortedArray[half]) / 2);
+    }
 
     return median;
   }
 
   occurences() {
-    return super.reduce(Reducer.objectReduce, {});
+    return this._reducer(Reducer.objectReduce, {});
   }
 
   from(arr) {
-    return super.push(...arr);
+    return this.push(...arr);
   }
 
   mode() {
