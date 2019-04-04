@@ -11,7 +11,7 @@ class BetterArray extends Array {
   }
 
   subtraction() {
-    return super.reduce(Reducer.subtractionReducer, 0);
+    return this._reducer(Reducer.subtractionReducer, 0);
   }
 
   product() {
