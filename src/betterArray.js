@@ -4,7 +4,6 @@ class BetterArray extends Array {
   constructor(...args) {
     super(...args);
     this._reducer = super.reduce;
-    this._isEven = () => (this.length % 2 === 0);
   }
 
   sum() {
@@ -12,8 +11,7 @@ class BetterArray extends Array {
   }
 
   subtraction() {
-    if (this.length === 0) { return 0; }
-    return this._reducer(Reducer.subtractionReducer);
+    return super.reduce(Reducer.subtractionReducer, 0);
   }
 
   product() {
@@ -32,12 +30,16 @@ class BetterArray extends Array {
     return this.sum() / this.length;
   }
 
+  isEven () {
+    return (this.length % 2 === 0);
+  }
+
   median() {
     const sortedArray = this.sort();
     const half = Math.round(sortedArray.length / 2);
     const median = sortedArray[half - 1];
 
-    if (this._isEven()) {
+    if (this.isEven()) {
       return ((median + sortedArray[half]) / 2);
     }
 
