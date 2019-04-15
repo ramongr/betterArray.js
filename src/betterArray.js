@@ -1,5 +1,5 @@
-import Reducer from './reducers/Reducer';
-import NumericHelper from './helpers/NumericHelper';
+import Reducer from './reducers/Reducer'
+import NumericHelper from './helpers/NumericHelper'
 
 class BetterArray extends Array {
   constructor(...args) {
