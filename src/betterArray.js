@@ -8,23 +8,23 @@ class BetterArray extends Array {
   }
 
   sum() {
-    return this._reducer(Reducer.sumReducer, 0)
+    return this._reducer(Reducer.addition, 0)
   }
 
   subtraction() {
-    return this._reducer(Reducer.subtractionReducer, 0)
+    return this._reducer(Reducer.subtraction, 0)
   }
 
   product() {
-    return this._reducer(Reducer.productReducer, 1)
+    return this._reducer(Reducer.multiplication, 1)
   }
 
   maximum() {
-    return this._reducer(Reducer.maxReducer())
+    return this._reducer(Reducer.greaterThan)
   }
 
   minimum() {
-    return this._reducer(Reducer.minReducer())
+    return this._reducer(Reducer.lowerThan)
   }
 
   average() {
@@ -48,7 +48,7 @@ class BetterArray extends Array {
   }
 
   occurences() {
-    return this._reducer(Reducer.objectReduce, {})
+    return this._reducer(Reducer.occurence, {})
   }
 
   from(arr) {
@@ -64,11 +64,11 @@ class BetterArray extends Array {
   }
 
   flat() {
-    return this._reducer(Reducer.concatReducer, []);
+    return this._reducer(Reducer.concat, []);
   }
 
   flatMap(fn) {
-    return this._reducer(Reducer.concatReducer, []).map(fn)
+    return this._reducer(Reducer.concat, []).map(fn)
   }
 
   inGroups(groups) {
