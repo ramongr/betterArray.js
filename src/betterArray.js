@@ -1,66 +1,82 @@
-import Reducer from './static/Reducer';
+import Reducer from './reducers/Reducer'
+import NumericHelper from './helpers/NumericHelper'
 
 class BetterArray extends Array {
   constructor(...args) {
-    super(...args);
-    this._reducer = super.reduce;
+    super(...args)
+    this._reducer = super.reduce
   }
 
   sum() {
-    return this._reducer(Reducer.sumReducer, 0);
+    return this._reducer(Reducer.addition, 0)
   }
 
   subtraction() {
-    return this._reducer(Reducer.subtractionReducer, 0);
+    return this._reducer(Reducer.subtraction, 0)
   }
 
   product() {
-    return this._reducer(Reducer.productReducer, 1);
+    return this._reducer(Reducer.multiplication, 1)
   }
 
   maximum() {
-    return this._reducer(Reducer.maxReducer());
+    return this._reducer(Reducer.greaterThan)
   }
 
   minimum() {
-    return this._reducer(Reducer.minReducer());
+    return this._reducer(Reducer.lowerThan)
   }
 
   average() {
-    return this.sum() / this.length;
+    return this.sum() / this.length
   }
 
-  isEven () {
-    return (this.length % 2 === 0);
+  isEvenLength() {
+    return NumericHelper.isEven(this.length)
   }
 
   median() {
-    const sortedArray = this.sort();
-    const half = Math.round(sortedArray.length / 2);
-    const median = sortedArray[half - 1];
+    const sortedArray = this.sort()
+    const half = NumericHelper.halfPoint(this.length)
+    const median = sortedArray[half - 1]
 
-    if (this.isEven()) {
-      return ((median + sortedArray[half]) / 2);
+    if (this.isEvenLength()) {
+      return ((median + sortedArray[half]) / 2)
     }
 
-    return median;
+    return median
   }
 
   occurences() {
-    return this._reducer(Reducer.objectReduce, {});
+    return this._reducer(Reducer.occurence, {})
   }
 
   from(arr) {
-    return this.push(...arr);
+    return this.push(...arr)
   }
 
   mode() {
-    const occurences = this.occurences();
-    const maxValue = Math.max(...Object.values(occurences));
-    const occurenceKeys = Object.keys(occurences);
+    const occurences = this.occurences()
+    const maxValue = Math.max(...Object.values(occurences))
+    const occurenceKeys = Object.keys(occurences)
 
-    return occurenceKeys.filter(occurenceKey => (occurences[occurenceKey] === maxValue));
+    return occurenceKeys.filter(occurenceKey => (occurences[occurenceKey] === maxValue))
+  }
+
+  flat() {
+    return this._reducer(Reducer.concat, []);
+  }
+
+  flatMap(fn) {
+    return this._reducer(Reducer.concat, []).map(fn)
+  }
+
+  inGroups(groups) {
+    const iterations = Math.ceil(this.length / groups);
+    const indices = Array(iterations).fill(null).map((_, index) => index * 2);
+
+    return indices.map((index) => this.slice(index, index + groups));
   }
 }
 
-export default BetterArray;
+export default BetterArray
