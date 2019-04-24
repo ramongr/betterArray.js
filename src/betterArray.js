@@ -64,7 +64,7 @@ class BetterArray extends Array {
   }
 
   flat() {
-    return this._reducer(Reducer.concat, []);
+    return this._reducer(Reducer.concat, [])
   }
 
   flatMap(fn) {
@@ -72,10 +72,10 @@ class BetterArray extends Array {
   }
 
   inGroups(groups) {
-    const iterations = Math.ceil(this.length / groups);
-    const indices = Array(iterations).fill(null).map((_, index) => index * 2);
+    const iterations = Math.ceil(this.length / groups)
+    const indices = Array(iterations).fill(null).map((_, index) => index * 2)
 
-    return indices.map((index) => this.slice(index, index + groups));
+    return indices.map((index) => this.slice(index, index + groups))
   }
 }
 
