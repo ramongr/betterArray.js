@@ -82,7 +82,7 @@ class BetterArray extends Array {
   }
 
   intersection(arr) {
-    return this.filter(item => arr.indexOf(item) === -1);
+    return this.filter(item => arr.indexOf(item) === -1)
   }
 }
 
