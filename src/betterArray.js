@@ -12,7 +12,10 @@ class BetterArray extends Array {
   }
 
   subtraction() {
-    return this._reducer(Reducer.subtraction, 0)
+    if (this.length === 0) {
+      return 0;
+    }
+    return this._reducer(Reducer.subtraction)
   }
 
   product() {
@@ -76,6 +79,10 @@ class BetterArray extends Array {
     const indices = Array(iterations).fill(null).map((_, index) => index * 2)
 
     return indices.map((index) => this.slice(index, index + groups))
+  }
+
+  intersection(arr) {
+    return this.filter(item => arr.indexOf(item) === -1);
   }
 }
 
