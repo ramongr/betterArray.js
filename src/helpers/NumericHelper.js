@@ -1,9 +1,9 @@
 class NumericHelper {
-  static isEven(num) { return (num.length / 2 === 0) }
+  static isEven = (num) => (num % 2 === 0)
 
-  static isOdd(num) { return !this.isEven(num) }
+  static isOdd = (num) => !this.isEven(num)
 
-  static halfPoint(num) { return Math.round(num / 2) }
+  static halfPoint = (num) => Math.round(num / 2)
 }
 
 export default NumericHelper
