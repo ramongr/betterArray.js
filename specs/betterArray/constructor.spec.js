@@ -1,13 +1,13 @@
 import BetterArray from '../../src/betterArray';
 
 describe('initial constructor', () => {
-  const ba = new BetterArray()
+  const betterArray = new BetterArray()
 
   test('should be equal to an empty array', () => {
-    expect(ba.toString()).toEqual([].toString())
+    expect(betterArray.toString()).toEqual([].toString())
   })
 
   test('array length must be zero', () => {
-    expect(ba.length).toBe(0)
+    expect(betterArray.length).toBe(0)
   })
 })
