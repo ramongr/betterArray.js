@@ -2,32 +2,30 @@ import Reducer from './reducers/Reducer'
 import NumericHelper from './helpers/NumericHelper'
 
 class BetterArray extends Array {
-  constructor(...args) {
-    super(...args)
-    this._reducer = super.reduce
+  constructor(...items) {
+    super();
+
+    this.from([...items]);
   }
 
   sum() {
-    return this._reducer(Reducer.addition, 0)
+    return this.reduce(Reducer.addition, 0)
   }
 
   subtraction() {
-    if (this.length === 0) {
-      return 0;
-    }
-    return this._reducer(Reducer.subtraction)
+    return this.reduce(Reducer.subtraction)
   }
 
   product() {
-    return this._reducer(Reducer.multiplication, 1)
+    return this.reduce(Reducer.multiplication)
   }
 
   maximum() {
-    return this._reducer(Reducer.greaterThan)
+    return this.reduce(Reducer.greaterThan)
   }
 
   minimum() {
-    return this._reducer(Reducer.lowerThan)
+    return this.reduce(Reducer.lowerThan)
   }
 
   average() {
@@ -51,7 +49,7 @@ class BetterArray extends Array {
   }
 
   occurences() {
-    return this._reducer(Reducer.occurence, {})
+    return this.reduce(Reducer.occurence, {})
   }
 
   from(arr) {
@@ -67,22 +65,29 @@ class BetterArray extends Array {
   }
 
   flat() {
-    return this._reducer(Reducer.concat, [])
+    return this.reduce(Reducer.concat, [])
   }
 
   flatMap(fn) {
-    return this._reducer(Reducer.concat, []).map(fn)
+    return this.reduce(Reducer.concat, []).map(fn)
   }
 
-  inGroups(groups) {
-    const iterations = Math.ceil(this.length / groups)
-    const indices = Array(iterations).fill(null).map((_, index) => index * 2)
-
-    return indices.map((index) => this.slice(index, index + groups))
+  inGroups(groupValue) {
+    let groupedArray = []
+    let subGroup = []
+    this.forEach((item, index) => {
+      subGroup.push(item)
+      if (index % groupValue === (groupValue - 1)) {
+        groupedArray.push(subGroup)
+        subGroup = []
+      }
+    })
+    subGroup.length > 0 && groupedArray.push(subGroup)
+    return groupedArray;
   }
 
   intersection(arr) {
-    return this.filter(item => arr.indexOf(item) === -1)
+    return this.filter(item => arr.indexOf(item) !== -1)
   }
 }
 
