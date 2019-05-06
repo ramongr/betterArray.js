@@ -3,3 +3,4 @@ html
 yarn-error.log
 .vscode
 dist
+coverage

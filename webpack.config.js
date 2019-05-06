@@ -9,6 +9,7 @@ module.exports = {
     filename: 'betterArray.min.js',
     library: 'BetterArray',
     libraryTarget: 'var',
+    libraryExport: 'default',
     umdNamedDefine: true
   },
   plugins: [
