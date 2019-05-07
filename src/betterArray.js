@@ -89,6 +89,30 @@ class BetterArray extends Array {
   intersection(arr) {
     return this.filter(item => arr.indexOf(item) !== -1)
   }
+
+  findIndex(fn) {
+    return this.indexOf(fn);
+  }
+
+  findLastIndex(fn) {
+    return this.lastIndexOf(fn);
+  }
+
+  first() {
+    return this[0]
+  }
+
+  second() {
+    return this[1]
+  }
+
+  last() {
+    return this[this.length - 1];
+  }
+
+  unique() {
+    return Array.from(new Set(this))
+  }
 }
 
 export default BetterArray
