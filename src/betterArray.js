@@ -89,6 +89,23 @@ class BetterArray extends Array {
   intersection(arr) {
     return this.filter(item => arr.indexOf(item) !== -1)
   }
+
+  exists(itemOrArray) {
+    const arr = Array.from(itemOrArray).flat()
+    const commonValues = this.intersection(arr)
+
+    return JSON.stringify(this.sort()) === JSON.stringify(commonValues.sort())
+  }
+
+  except(itemOrArray) {
+    const arr = Array.from(itemOrArray).flat()
+
+    return this.filter(item => arr.indexOf(item) === -1)
+  }
+
+  union(arr) {
+    return Array.from(new Set(this.concat(arr)))
+  }
 }
 
 export default BetterArray
