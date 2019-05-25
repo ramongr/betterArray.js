@@ -1,7 +1,7 @@
-import BetterArray from '../../src/betterArray';
+import BetterArray from '../../src/betterArray'
 
 describe('reducer operations', () => {
-  let betterArray;
+  let betterArray
 
   beforeEach(() => {
     betterArray = new BetterArray()
@@ -13,19 +13,19 @@ describe('reducer operations', () => {
     })
 
     test('subtraction should raise an error', () => {
-      expect(() => { betterArray.subtraction() }).toThrowError(TypeError)
+      expect(() => { betterArray.subtraction() }).toThrow(TypeError)
     })
 
     test('product should raise an error', () => {
-      expect(() => { betterArray.product() }).toThrowError(TypeError)
+      expect(() => { betterArray.product() }).toThrow(TypeError)
     })
 
     test('maximum should raise an error', () => {
-      expect(() => { betterArray.maximum() }).toThrowError(TypeError)
+      expect(() => { betterArray.maximum() }).toThrow(TypeError)
     })
 
     test('minimum should raise an error', () => {
-      expect(() => { betterArray.minimum() }).toThrowError(TypeError)
+      expect(() => { betterArray.minimum() }).toThrow(TypeError)
     })
   })
 
