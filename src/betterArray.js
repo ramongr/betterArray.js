@@ -3,9 +3,9 @@ import NumericHelper from './helpers/NumericHelper'
 
 class BetterArray extends Array {
   constructor(...items) {
-    super();
+    super()
 
-    this.from([...items]);
+    this.from([...items])
   }
 
   sum() {
@@ -73,7 +73,7 @@ class BetterArray extends Array {
   }
 
   inGroups(groupValue) {
-    let groupedArray = []
+    const groupedArray = []
     let subGroup = []
     this.forEach((item, index) => {
       subGroup.push(item)
@@ -82,19 +82,21 @@ class BetterArray extends Array {
         subGroup = []
       }
     })
-    subGroup.length > 0 && groupedArray.push(subGroup)
-    return groupedArray;
+    if (subGroup.length > 0) {
+      groupedArray.push(subGroup)
+    }
+    return groupedArray
   }
 
   intersection(arr) {
     return this.filter(item => arr.indexOf(item) !== -1)
   }
 
-  exists(itemOrArray) {
+  exists(itemOrArray = []) {
     const arr = Array.from(itemOrArray).flat()
     const commonValues = this.intersection(arr)
 
-    return JSON.stringify(this.sort()) === JSON.stringify(commonValues.sort())
+    return this.length !== 0 || commonValues.length > 0
   }
 
   except(itemOrArray) {
@@ -104,7 +106,9 @@ class BetterArray extends Array {
   }
 
   union(arr) {
-    return Array.from(new Set(this.concat(arr)))
+    const unionizableArray = this.except(arr)
+
+    return this.concat(unionizableArray)
   }
 }
 
