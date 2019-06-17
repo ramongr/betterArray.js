@@ -31,31 +31,31 @@ describe('reducer operations', () => {
 
   describe('non empty arrays', () => {
     test('sum should be the result of adding all the values', () => {
-      const sumValue = 1 + 2 + 3;
+      const sumValue = 1 + 2 + 3
       betterArray.from([1, 2, 3])
       expect(betterArray.sum()).toBe(sumValue)
     })
 
     test('subtraction should be the result of subtracting all the values', () => {
-      const subtractionValue = 1 - 2 - 10;
+      const subtractionValue = 1 - 2 - 10
       betterArray.from([1, 2, 10])
       expect(betterArray.subtraction()).toBe(subtractionValue)
     })
 
     test('product should be the result of multiplying all the values', () => {
-      const productValue = 1 * 2 * 3;
+      const productValue = 1 * 2 * 3
       betterArray.from([1, 2, 3])
       expect(betterArray.product()).toBe(productValue)
     })
 
     test('maximum returns the highest value', () => {
-      const maximumValue = 7;
+      const maximumValue = 7
       betterArray.from([7, 1, 2, 3])
       expect(betterArray.maximum()).toBe(maximumValue)
     })
 
     test('minimum returns lowest value', () => {
-      const minimumValue = 1;
+      const minimumValue = 1
       betterArray.from([7, 1, 2, 3])
       expect(betterArray.minimum()).toBe(minimumValue)
     })
