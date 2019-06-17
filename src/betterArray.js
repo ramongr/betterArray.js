@@ -1,5 +1,5 @@
-import Reducer from './reducers/Reducer'
-import NumericHelper from './helpers/NumericHelper'
+import Numeric from '../src/predicates/Numeric'
+import SubArray from '../src/predicates/SubArray'
 
 class BetterArray extends Array {
   constructor(...items) {
@@ -33,12 +33,12 @@ class BetterArray extends Array {
   }
 
   isEvenLength() {
-    return NumericHelper.isEven(this.length)
+    return Numeric.isEven(this.length)
   }
 
   median() {
     const sortedArray = this.sort()
-    const half = NumericHelper.halfPoint(this.length)
+    const half = Numeric.halfPoint(this.length)
     const median = sortedArray[half - 1]
 
     if (this.isEvenLength()) {
@@ -49,7 +49,7 @@ class BetterArray extends Array {
   }
 
   occurences() {
-    return this.reduce(Reducer.occurence, {})
+    return this.reduce(SubArray.occurence, {})
   }
 
   from(arr) {
@@ -65,11 +65,11 @@ class BetterArray extends Array {
   }
 
   flat() {
-    return this.reduce(Reducer.concat, [])
+    return this.reduce(SubArray.concat, [])
   }
 
   flatMap(fn) {
-    return this.reduce(Reducer.concat, []).map(fn)
+    return this.reduce(SubArray.concat, []).map(fn)
   }
 
   inGroups(groupValue) {
