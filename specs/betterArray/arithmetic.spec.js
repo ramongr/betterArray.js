@@ -1,7 +1,7 @@
-import BetterArray from '../../src/betterArray';
+import BetterArray from '../../src/betterArray'
 
 describe('arithmetic operations', () => {
-  let betterArray;
+  let betterArray
 
   beforeEach(() => {
     betterArray = new BetterArray()
@@ -38,31 +38,31 @@ describe('arithmetic operations', () => {
     })
 
     test('average should return the average value', () => {
-      const averageValue = (1 + 2 + 3) / 3;
+      const averageValue = (1 + 2 + 3) / 3
       betterArray.from([1, 2, 3])
       expect(betterArray.average()).toBe(averageValue)
     })
 
     test('median with odd length should return the half point value', () => {
-      const medianValue = 2;
+      const medianValue = 2
       betterArray.from([1, 2, 3])
       expect(betterArray.median()).toBe(medianValue)
     })
 
     test('median with even length should return the calculated value', () => {
-      const medianValue = 2.5;
+      const medianValue = 2.5
       betterArray.from([1, 2, 3, 4])
       expect(betterArray.median()).toBe(medianValue)
     })
     
     test('mode with multiple occurences should return an array', () => {
-      const modeValue = ["2", "3"]
+      const modeValue = ['2', '3']
       betterArray.from([1, 2, 2, 3, 3])
       expect(betterArray.mode()).toEqual(modeValue)
     })
   
     test('mode with even length should return the calculated value', () => {
-      const modeValue = ["2"]
+      const modeValue = ['2']
       betterArray.from([1, 2, 2, 3, 4])
       expect(betterArray.mode()).toEqual(modeValue)
     })

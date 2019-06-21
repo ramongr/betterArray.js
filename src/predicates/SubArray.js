@@ -10,3 +10,5 @@ class SubArray {
 
   static concat = (arr, item) => arr.concat(item)
 }
+
+export default SubArray

@@ -1,4 +1,4 @@
-class Reducer {
+class Numeric {
   static addition = (accumulator, currentValue) => accumulator + currentValue
 
   static subtraction = (accumulator, currentValue) => accumulator - currentValue
@@ -16,4 +16,4 @@ class Reducer {
   static halfPoint = (num) => Math.round(num / 2)
 }
 
-export default Reducer
+export default Numeric

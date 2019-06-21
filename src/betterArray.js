@@ -9,23 +9,23 @@ class BetterArray extends Array {
   }
 
   sum() {
-    return this.reduce(Reducer.addition, 0)
+    return this.reduce(Numeric.addition, 0)
   }
 
   subtraction() {
-    return this.reduce(Reducer.subtraction)
+    return this.reduce(Numeric.subtraction)
   }
 
   product() {
-    return this.reduce(Reducer.multiplication)
+    return this.reduce(Numeric.multiplication)
   }
 
   maximum() {
-    return this.reduce(Reducer.greaterThan)
+    return this.reduce(Numeric.greaterThan)
   }
 
   minimum() {
-    return this.reduce(Reducer.lowerThan)
+    return this.reduce(Numeric.lowerThan)
   }
 
   average() {
