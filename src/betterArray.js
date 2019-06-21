@@ -93,14 +93,14 @@ class BetterArray extends Array {
   }
 
   exists(itemOrArray = []) {
-    const arr = Array.from(itemOrArray).flat()
+    const arr = Array.isArray(itemOrArray) ? itemOrArray : [itemOrArray]
     const commonValues = this.intersection(arr)
 
     return this.length !== 0 || commonValues.length > 0
   }
 
   except(itemOrArray) {
-    const arr = Array.from(itemOrArray).flat()
+    const arr = Array.isArray(itemOrArray) ? itemOrArray : [itemOrArray]
 
     return this.filter(item => arr.indexOf(item) === -1)
   }
