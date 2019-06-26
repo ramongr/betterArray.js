@@ -19,7 +19,7 @@
     "babel-plugin-transform-builtin-extend": "1.1.2",
     "eslint": "6.0.1",
     "eslint-config-airbnb-base": "13.1.0",
-    "eslint-plugin-import": "2.17.3",
+    "eslint-plugin-import": "2.18.0",
     "eslint-plugin-jest": "^22.6.4",
     "jest": "24.8.0",
     "unminified-webpack-plugin": "2.0.0",
