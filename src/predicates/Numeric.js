@@ -1,4 +1,4 @@
-class Reducer {
+class Numeric {
   static addition = (accumulator, currentValue) => accumulator + currentValue
 
   static subtraction = (accumulator, currentValue) => accumulator - currentValue
@@ -9,16 +9,11 @@ class Reducer {
 
   static lowerThan = (min, compare) => (min < compare) ? min : compare
 
-  static occurence = (object, item) => {
-    const newObject = JSON.parse(JSON.stringify(object))
+  static isEven = (num) => (num % 2 === 0)
 
-    newObject[item] = 1
-    newObject[item] += object[item] ? 1 : 0
+  static isOdd = (num) => !this.isEven(num)
 
-    return newObject
-  }
-
-  static concat = (arr, item) => arr.concat(item)
+  static halfPoint = (num) => Math.round(num / 2)
 }
 
-export default Reducer
+export default Numeric

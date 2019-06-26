@@ -1,31 +1,31 @@
-import Reducer from './reducers/Reducer'
-import NumericHelper from './helpers/NumericHelper'
+import Numeric from '../src/predicates/Numeric'
+import SubArray from '../src/predicates/SubArray'
 
 class BetterArray extends Array {
   constructor(...items) {
-    super();
+    super()
 
-    this.from([...items]);
+    this.from([...items])
   }
 
   sum() {
-    return this.reduce(Reducer.addition, 0)
+    return this.reduce(Numeric.addition, 0)
   }
 
   subtraction() {
-    return this.reduce(Reducer.subtraction)
+    return this.reduce(Numeric.subtraction)
   }
 
   product() {
-    return this.reduce(Reducer.multiplication)
+    return this.reduce(Numeric.multiplication)
   }
 
   maximum() {
-    return this.reduce(Reducer.greaterThan)
+    return this.reduce(Numeric.greaterThan)
   }
 
   minimum() {
-    return this.reduce(Reducer.lowerThan)
+    return this.reduce(Numeric.lowerThan)
   }
 
   average() {
@@ -33,12 +33,12 @@ class BetterArray extends Array {
   }
 
   isEvenLength() {
-    return NumericHelper.isEven(this.length)
+    return Numeric.isEven(this.length)
   }
 
   median() {
     const sortedArray = this.sort()
-    const half = NumericHelper.halfPoint(this.length)
+    const half = Numeric.halfPoint(this.length)
     const median = sortedArray[half - 1]
 
     if (this.isEvenLength()) {
@@ -49,7 +49,7 @@ class BetterArray extends Array {
   }
 
   occurences() {
-    return this.reduce(Reducer.occurence, {})
+    return this.reduce(SubArray.occurence, {})
   }
 
   from(arr) {
@@ -65,15 +65,15 @@ class BetterArray extends Array {
   }
 
   flat() {
-    return this.reduce(Reducer.concat, [])
+    return this.reduce(SubArray.concat, [])
   }
 
   flatMap(fn) {
-    return this.reduce(Reducer.concat, []).map(fn)
+    return this.reduce(SubArray.concat, []).map(fn)
   }
 
   inGroups(groupValue) {
-    let groupedArray = []
+    const groupedArray = []
     let subGroup = []
     this.forEach((item, index) => {
       subGroup.push(item)
@@ -82,12 +82,33 @@ class BetterArray extends Array {
         subGroup = []
       }
     })
-    subGroup.length > 0 && groupedArray.push(subGroup)
-    return groupedArray;
+    if (subGroup.length > 0) {
+      groupedArray.push(subGroup)
+    }
+    return groupedArray
   }
 
   intersection(arr) {
     return this.filter(item => arr.indexOf(item) !== -1)
+  }
+
+  exists(itemOrArray = []) {
+    const arr = Array.isArray(itemOrArray) ? itemOrArray : [itemOrArray]
+    const commonValues = this.intersection(arr)
+
+    return this.length !== 0 || commonValues.length > 0
+  }
+
+  except(itemOrArray) {
+    const arr = Array.isArray(itemOrArray) ? itemOrArray : [itemOrArray]
+
+    return this.filter(item => arr.indexOf(item) === -1)
+  }
+
+  union(arr) {
+    const unionizableArray = this.except(arr)
+
+    return this.concat(unionizableArray)
   }
 }
 
