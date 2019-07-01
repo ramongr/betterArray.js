@@ -55,9 +55,11 @@ describe('mapping operations', () => {
 
     test('inGroups groups by any value smaller than the arrays length', () => {
       betterArray.from([1,2,3,4,5,6])
-      const groupValue = parseInt(Math.random() * betterArray.length);
-      const expectedLength = Math.ceil(betterArray.length/groupValue);
-      expect(betterArray.inGroups(groupValue).length).toBe(expectedLength)
+      const groupValue = parseInt(Math.random() * betterArray.length)
+      const expectedLength = Math.ceil(betterArray.length/groupValue)
+      const inGroupsResult = betterArray.inGroups(groupValue)
+
+      expect(inGroupsResult.length).toEqual(expectedLength)
     })
 
     test('inGroups returns one group when the group equals the length', () => {
