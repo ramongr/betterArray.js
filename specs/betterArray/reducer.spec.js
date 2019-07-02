@@ -8,7 +8,7 @@ describe('reducer operations', () => {
   })
 
   describe('from empty arrays', () => {
-    test('sum should return 0' , () => {
+    test('sum should return 0', () => {
       expect(betterArray.sum()).toBe(0)
     })
 
