@@ -1,7 +1,7 @@
 import BetterArray from '../../src/betterArray'
 
 describe('subarray operations', () => {
-  let betterArray;
+  let betterArray
 
   beforeEach(() => {
     betterArray = new BetterArray()
