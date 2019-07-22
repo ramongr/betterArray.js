@@ -1,7 +1,7 @@
 import BetterArray from '../../src/betterArray';
 
 describe('mapping operations', () => {
-  let betterArray;
+  let betterArray
 
   beforeEach(() => {
     betterArray = new BetterArray()
@@ -17,7 +17,7 @@ describe('mapping operations', () => {
     })
 
     test('inGroups returns an empty array', () => {
-      const groupValue = parseInt(Math.random() * 100)
+      const groupValue = parseInt(Math.random() * 100, 10)
       expect(betterArray.inGroups(groupValue)).toEqual([])
     })
 
@@ -54,10 +54,12 @@ describe('mapping operations', () => {
     })
 
     test('inGroups groups by any value smaller than the arrays length', () => {
-      betterArray.from([1,2,3,4,5,6])
-      const groupValue = parseInt(Math.random() * betterArray.length);
-      const expectedLength = Math.ceil(betterArray.length/groupValue);
-      expect(betterArray.inGroups(groupValue).length).toBe(expectedLength)
+      betterArray.from([1, 2, 3, 4, 5, 6])
+      const groupValue = parseInt(Math.random() * betterArray.length, 10)
+      const expectedLength = Math.ceil(betterArray.length / groupValue)
+      const inGroupsResult = betterArray.inGroups(groupValue)
+
+      expect(inGroupsResult.length).toEqual(expectedLength)
     })
 
     test('inGroups returns one group when the group equals the length', () => {
@@ -87,7 +89,7 @@ describe('mapping operations', () => {
 
   describe('mapping operation with empty array and idempotent function', () => {
     test('flatMap returns an empty array', () => {
-      expect(betterArray.flatMap((item) => item)).toEqual([])
+      expect(betterArray.flatMap(item => item)).toEqual([])
     })
   })
 })
