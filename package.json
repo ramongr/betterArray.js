@@ -23,7 +23,7 @@
     "eslint-plugin-jest": "22.15.0",
     "jest": "24.8.0",
     "unminified-webpack-plugin": "2.0.0",
-    "webpack": "4.39.1",
+    "webpack": "4.39.2",
     "webpack-cli": "3.3.6"
   },
   "dependencies": {
