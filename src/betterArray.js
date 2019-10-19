@@ -1,11 +1,9 @@
 import BetterArrayNumeric from './betterArrayNumeric'
 
-class BetterArray extends BetterArrayNumeric {
-  constructor(...items) {
+export default class BetterArray extends BetterArrayNumeric {
+  constructor(items = []) {
     super()
 
     this.from([...items])
   }
 }
-
-export default BetterArray

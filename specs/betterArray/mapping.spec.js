@@ -53,25 +53,16 @@ describe('mapping operations', () => {
       expect(betterArray.flat()).toEqual(finalArray)
     })
 
-    test('inGroups groups by any value smaller than the arrays length', () => {
-      betterArray.from([1, 2, 3, 4, 5, 6])
-      const groupValue = parseInt(Math.random() * betterArray.length, 10)
-      const expectedLength = Math.ceil(betterArray.length / groupValue)
-      const inGroupsResult = betterArray.inGroups(groupValue)
-
-      expect(inGroupsResult.length).toEqual(expectedLength)
-    })
-
-    test('inGroups returns one group when the group equals the length', () => {
+    test('inGroups returns one group when the group is 1', () => {
       const array = [1, 2, 3, 4, 5, 6]
       betterArray.from(array)
-      expect(betterArray.inGroups(betterArray.length)).toEqual([array])
+      expect(betterArray.inGroups(1)).toEqual([array])
     })
 
     test('inGroups returns a matrix with the correct amount of values', () => {
       const array = [1, 2, 3, 4, 5, 6]
       betterArray.from(array)
-      expect(betterArray.inGroups(3)).toEqual([[1, 2, 3], [4, 5, 6]]);
+      expect(betterArray.inGroups(3)).toEqual([[1, 2], [3, 4], [5, 6]]);
     })
 
     test('intersection returns the value 2 arrays have in common', () => {
@@ -89,7 +80,7 @@ describe('mapping operations', () => {
 
   describe('mapping operation with empty array and idempotent function', () => {
     test('flatMap returns an empty array', () => {
-      expect(betterArray.flatMap(item => item)).toEqual([])
+      expect(betterArray.flatMap((item) => item)).toEqual([])
     })
   })
 })
