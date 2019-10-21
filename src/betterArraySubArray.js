@@ -1,61 +1,54 @@
-import SubArray from './predicates/SubArray'
+import { occurence, concat } from './predicates/SubArray'
 
-class BetterArraySubArray extends Array {
+export default class BetterArraySubArray extends Array {
   occurences() {
-    return this.reduce(SubArray.occurence, {})
+    return this.reduce(occurence, {})
   }
 
   from(arr) {
     return this.push(...arr)
   }
 
-  mode() {
-    const occurences = this.occurences()
-    const maxValue = Math.max(...Object.values(occurences))
-    const occurenceKeys = Object.keys(occurences)
-
-    return occurenceKeys.filter(occurenceKey => (occurences[occurenceKey] === maxValue))
-  }
-
   flat() {
-    return this.reduce(SubArray.concat, [])
+    return this.reduce(concat, [])
   }
 
   flatMap(fn) {
-    return this.reduce(SubArray.concat, []).map(fn)
+    return this.reduce(concat, []).map(fn)
   }
 
-  inGroups(groupValue) {
-    const groupedArray = []
-    let subGroup = []
-    this.forEach((item, index) => {
-      subGroup.push(item)
-      if (index % groupValue === (groupValue - 1)) {
-        groupedArray.push(subGroup)
-        subGroup = []
+  intervals(amount) {
+    const offset = Math.ceil(this.length / amount);
+
+    return this.reduce((offsets, _, index) => {
+      if (index === 0 || index % offset === 0) {
+        offsets.push([index, index + offset])
       }
-    })
-    if (subGroup.length > 0) {
-      groupedArray.push(subGroup)
-    }
-    return groupedArray
+
+      return offsets
+    }, [])
+  }
+
+  inGroups(amount) {
+    return this.intervals(amount).map(([firstIndex, lastIndex]) => this.slice(firstIndex, lastIndex))
   }
 
   intersection(arr) {
-    return this.filter(item => arr.indexOf(item) !== -1)
+    return this.filter((item) => arr.indexOf(item) !== -1)
   }
 
   exists(itemOrArray = []) {
+    if (this.length === 0) {
+      return false
+    }
     const arr = Array.isArray(itemOrArray) ? itemOrArray : [itemOrArray]
-    const commonValues = this.intersection(arr)
-
-    return this.length !== 0 || commonValues.length > 0
+    return this.intersection(arr).length > 0
   }
 
   except(itemOrArray) {
     const arr = Array.isArray(itemOrArray) ? itemOrArray : [itemOrArray]
 
-    return this.filter(item => arr.indexOf(item) === -1)
+    return this.filter((item) => arr.indexOf(item) === -1)
   }
 
   union(arr) {
@@ -63,6 +56,20 @@ class BetterArraySubArray extends Array {
 
     return this.concat(unionizableArray)
   }
-}
 
-export default BetterArraySubArray
+  first() {
+    return this[0]
+  }
+
+  second() {
+    return this[1]
+  }
+
+  last() {
+    return this[this.length - 1]
+  }
+
+  unique() {
+    return Array.from(new Set(this))
+  }
+}

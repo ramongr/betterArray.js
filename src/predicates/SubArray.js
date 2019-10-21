@@ -1,14 +1,11 @@
-class SubArray {
-  static occurence = (object, item) => {
-    const newObject = JSON.parse(JSON.stringify(object))
 
-    newObject[item] = 1
-    newObject[item] += object[item] ? 1 : 0
+export const occurence = (object, item) => {
+  const newObject = JSON.parse(JSON.stringify(object))
 
-    return newObject
-  }
+  newObject[item] = 1
+  newObject[item] += object[item] ? 1 : 0
 
-  static concat = (arr, item) => arr.concat(item)
+  return newObject
 }
 
-export default SubArray
+export const concat = (arr, item) => arr.concat(item)

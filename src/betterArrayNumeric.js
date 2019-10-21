@@ -1,25 +1,27 @@
-import Numeric from './predicates/Numeric'
+import {
+  addition, subtraction, multiplication, greaterThan, lowerThan, isEven, halfPoint,
+} from './predicates/Numeric'
 import BetterArraySubArray from './betterArraySubArray'
 
-class BetterArrayNumeric extends BetterArraySubArray {
+export default class BetterArrayNumeric extends BetterArraySubArray {
   sum() {
-    return this.reduce(Numeric.addition, 0)
+    return this.reduce(addition, 0)
   }
 
   subtraction() {
-    return this.reduce(Numeric.subtraction)
+    return this.reduce(subtraction)
   }
 
   product() {
-    return this.reduce(Numeric.multiplication)
+    return this.reduce(multiplication)
   }
 
   maximum() {
-    return this.reduce(Numeric.greaterThan)
+    return this.reduce(greaterThan)
   }
 
   minimum() {
-    return this.reduce(Numeric.lowerThan)
+    return this.reduce(lowerThan)
   }
 
   average() {
@@ -27,12 +29,12 @@ class BetterArrayNumeric extends BetterArraySubArray {
   }
 
   isEvenLength() {
-    return Numeric.isEven(this.length)
+    return isEven(this.length)
   }
 
   median() {
     const sortedArray = this.sort()
-    const half = Numeric.halfPoint(this.length)
+    const half = halfPoint(this.length)
     const median = sortedArray[half - 1]
 
     if (this.isEvenLength()) {
@@ -41,6 +43,12 @@ class BetterArrayNumeric extends BetterArraySubArray {
 
     return median
   }
-}
 
-export default BetterArrayNumeric
+  mode() {
+    const occurences = this.occurences()
+    const maxValue = Math.max(...Object.values(occurences))
+    const occurenceKeys = Object.keys(occurences)
+
+    return occurenceKeys.filter((occurenceKey) => (occurences[occurenceKey] === maxValue))
+  }
+}

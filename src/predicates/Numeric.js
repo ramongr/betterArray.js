@@ -1,19 +1,15 @@
-class Numeric {
-  static addition = (accumulator, currentValue) => accumulator + currentValue
+export const addition = (accumulator, currentValue) => accumulator + currentValue
 
-  static subtraction = (accumulator, currentValue) => accumulator - currentValue
+export const subtraction = (accumulator, currentValue) => accumulator - currentValue
 
-  static multiplication = (accumulator, currentValue) => accumulator * currentValue
+export const multiplication = (accumulator, currentValue) => accumulator * currentValue
 
-  static greaterThan = (max, compare) => (max > compare) ? max : compare
+export const greaterThan = (max, compare) => ((max > compare) ? max : compare)
 
-  static lowerThan = (min, compare) => (min < compare) ? min : compare
+export const lowerThan = (min, compare) => ((min < compare) ? min : compare)
 
-  static isEven = (num) => (num % 2 === 0)
+export const isEven = (num) => (num % 2 === 0)
 
-  static isOdd = (num) => !this.isEven(num)
+export const isOdd = (num) => !this.isEven(num)
 
-  static halfPoint = (num) => Math.round(num / 2)
-}
-
-export default Numeric
+export const halfPoint = (num) => Math.round(num / 2)
