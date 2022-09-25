@@ -24,7 +24,7 @@
     "jest": "26.5.3",
     "unminified-webpack-plugin": "2.0.0",
     "webpack": "4.44.1",
-    "webpack-cli": "3.3.12"
+    "webpack-cli": "4.10.0"
   },
   "dependencies": {
     "global": "^4.3.2"
